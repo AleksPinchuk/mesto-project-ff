@@ -1,5 +1,5 @@
 import './index.css'; // добавьте импорт главного файла стилей 
-import { initialCards } from '../scripts/cards';
+import { initialCards } from './scripts/cards';
 
 // @todo: Темплейт карточки
 const cardsTemplate = document.querySelector('#card-template').content;
