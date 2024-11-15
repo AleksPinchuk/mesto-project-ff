@@ -1,3 +1,10 @@
+// Переменные для формы
+const formEditProfile = document.querySelector('#edit-profile');
+const nameInput = formEditProfile.querySelector('.popup__input_type_name');
+const jobInput = formEditProfile.querySelector('.popup__input_type_description');
+const profileName = document.querySelector('.profile__title');
+const profileJob = document.querySelector('.profile__description');
+import {popupEdit} from '../index'
 // Функция для открытия и закрытия модального окна
 export function openModal(modal) {
     modal.classList.add('popup_is-opened');
@@ -16,4 +23,14 @@ function handleEscClose(evt) {
       if (openModal) closeModal(openModal);
   }
 }
+
+// Обработчик отправки формы
+export function handleFormSubmit(evt) {
+    evt.preventDefault();
+    profileName.textContent = nameInput.value;
+    profileJob.textContent = jobInput.value;
+    closeModal(popupEdit);
+}
+
+
 

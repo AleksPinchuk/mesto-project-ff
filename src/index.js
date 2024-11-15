@@ -1,20 +1,26 @@
 import './index.css'; // добавьте импорт главного файла стилей 
 import { initialCards } from './scripts/cards';
-import { createCard, deleteCard } from './components/card';
-import { openModal, closeModal } from './components/popup';
+import { createCard, deleteCard, handleAddCardFormSubmit } from './components/card';
+import { openModal, closeModal, handleFormSubmit } from './components/popup';
 
 // Получаем элементы модальных оконк инопок
-const popupEdit = document.querySelector('.popup_type_edit');
-const popupAdd = document.querySelector('.popup_type_new-card');
+export const popupEdit = document.querySelector('.popup_type_edit');
+export const popupAdd = document.querySelector('.popup_type_new-card');
 const popupImage = document.querySelector('.popup_type_image');
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 const closeButtons = document.querySelectorAll('.popup__close');
 const imageElements = document.querySelectorAll('.card__image');
-
-// Получаем элементы popupImageView
-const popupImageImg = popupImage.querySelector(".popup__image");
-const popupImageCaption = popupImage.querySelector(".popup__caption");
+// Форма
+const formEditProfile = document.querySelector('#edit-profile');
+const nameInput = formEditProfile.querySelector('.popup__input_type_name');
+const jobInput = formEditProfile.querySelector('.popup__input_type_description');
+const profileName = document.querySelector('.profile__title');
+const profileJob = document.querySelector('.profile__description');
+// Создание новой карточки
+const formNewCard = document.querySelector('#new-place');
+const cardNameInput = document.querySelector('.popup__input_type_card-name');
+const cardLinkInput = document.querySelector('.popup__input_type_url');
 
 // // @todo: DOM узлы
 const cardContainer = document.querySelector('.places__list');
@@ -50,3 +56,13 @@ document.addEventListener('click', (evt) => {
       closeModal(evt.target);
   }
 });
+
+// Предзаполнение формы текущими значениями
+editButton.addEventListener('click', () => {
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileJob.textContent;
+});
+
+formEditProfile.addEventListener('submit', handleFormSubmit);
+
+formNewCard.addEventListener('submit', handleAddCardFormSubmit);
