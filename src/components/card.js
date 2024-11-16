@@ -57,19 +57,6 @@ export function handleImageClick(img, link, name) {
    }); 
 }
 
-// Обработчик отправки формы добавления карточки
-export function handleAddCardFormSubmit(evt) {
-    evt.preventDefault();
-    const cardParams = {
-      name: cardNameInput.value,
-      link: cardLinkInput.value,
-      deleteCard: deleteCard,
-      handleLikeButton: handleLikeButton,
-    };
-    const newCard = createCard(cardParams);
-    cardContainer.prepend(newCard);
-    formNewCard.reset();
-    closeModal(popupAdd);
-}
+
 
 

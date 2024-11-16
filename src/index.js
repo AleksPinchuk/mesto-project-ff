@@ -1,8 +1,8 @@
 // импорт главного файла стилей 
 import './index.css'; 
 import { initialCards } from './scripts/cards';
-import { createCard, deleteCard, handleAddCardFormSubmit, handleLikeButton,
-  popupAdd, popupImage, cardContainer, formNewCard, cardNameInput, cardLinkInput } from './components/card';
+import { createCard, deleteCard, handleLikeButton, popupAdd,
+   popupImage, cardContainer, formNewCard, cardNameInput, cardLinkInput } from './components/card';
 import { openModal, closeModal, popupEdit,
   formEditProfile, nameInput, jobInput, profileJob, profileName} from './components/popup';
 
@@ -16,14 +16,14 @@ const imageElements = document.querySelectorAll('.card__image');
 
 // // функция принимает в вызов карточку и метод вставки
 // // метод по умолчанию `prepend`, но можно указать `append` 
-// function renderCard(item, method = "prepend") {
+function renderCard(item, method = "prepend") {
 
-//   // создаем карточку, передавая обработчики в виде объекта `callbacks`
-//   const cardElement = createCard(item, callbacks);
+  // создаем карточку, передавая обработчики в виде объекта `callbacks`
+  const cardElement = createCard(item);
 
-//   // вставляем карточку, используя метод (вставится `prepend` или `append`)
-//   cardContainer[ method ](cardElement);
-// }
+  // вставляем карточку, используя метод (вставится `prepend` или `append`)
+  cardContainer[ method ](cardElement);
+}
 
 // // @todo: Вывести карточки на страницу
 initialCards.forEach((element) => {
@@ -33,9 +33,22 @@ initialCards.forEach((element) => {
     deleteCard: deleteCard,
     handleLikeButton: handleLikeButton,
   };
-  const card = createCard(cardParams);
-  cardContainer.append(card);
+  renderCard(cardParams, 'append');
 });
+
+// Обработчик отправки формы добавления карточки
+function handleAddCardFormSubmit(evt) {
+  evt.preventDefault();
+  const cardParams = {
+    name: cardNameInput.value,
+    link: cardLinkInput.value,
+    deleteCard: deleteCard,
+    handleLikeButton: handleLikeButton,
+  };
+  renderCard(cardParams, 'prepend');
+  formNewCard.reset();
+  closeModal(popupAdd);
+}
 
 // Открытие модальных окон по клику
 editButton.addEventListener('click', () => {
