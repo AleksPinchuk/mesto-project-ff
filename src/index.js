@@ -100,13 +100,13 @@ popups.forEach((popup) => {
 })
 
 // Обработчик отправки формы редактировария профиля
-function profileForm(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
   closeModal(popupEdit);
 }
 
-formEditProfile.addEventListener('submit', profileForm);
+formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 
 formNewCard.addEventListener('submit', handleAddCardFormSubmit);
