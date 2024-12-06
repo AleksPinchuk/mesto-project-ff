@@ -12,6 +12,7 @@
 ## Ссылка на проект 
 
 Ссылка на репозиторий GitHub: https://github.com/AleksPinchuk/mesto-project-ff.git
+
 Ссылка на сайт проекта на GitHub Pages: https://alekspinchuk.github.io/mesto-project-ff/
 
 ## Технологии
