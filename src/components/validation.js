@@ -47,7 +47,7 @@ const setEventListeners = (formElement) => {
 
 
 
-const enableValidation = () => {
+export const enableValidation = () => {
   const formList = Array.from(document.querySelectorAll('.form'));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', function (evt) {
@@ -78,8 +78,6 @@ const toggleButtonState = (inputList, buttonElement) => {
   }
 }
 
-
-enableValidation();
 
 //Нужно изменить
 // const isValid = (formElement, inputElement) => {
