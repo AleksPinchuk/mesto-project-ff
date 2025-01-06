@@ -138,6 +138,34 @@ const toggleButtonState = ({
   }
 }
 
+export const clearValidation = (
+  formElement,
+  {
+    submitButtonSelector,
+    inactiveButtonClass,
+    inputSelector,
+    inputErrorClass,
+    errorClass,
+  }
+) => {
+  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+  const submitButtonElement = formElement.querySelector(submitButtonSelector);
+
+  inputList.forEach((inputElement) => {
+    hideInputError({
+      formElement,
+      inputElement,
+      inputErrorClass,
+      errorClass,
+    });
+  });
+
+  toggleButtonState({
+    inputList,
+    submitButtonElement,
+    inactiveButtonClass,
+  });
+};
 
 //Нужно изменить
 // const isValid = (formElement, inputElement) => {

@@ -3,7 +3,7 @@ import './index.css';
 import { initialCards } from './scripts/cards';
 import { createCard, deleteCard, handleLikeButton } from './components/card';
 import { openModal, closeModal } from './components/popup';
-import { enableValidation } from './components/validation'
+import { enableValidation, clearValidation } from './components/validation'
 
 // Получаем элементы модальных оконк инопок
 // export const popupAdd = document.querySelector('.popup_type_new-card');
@@ -113,4 +113,13 @@ formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 formNewCard.addEventListener('submit', handleAddCardFormSubmit);
 
 // Валидация форм
-enableValidation();
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible',
+};
+
+enableValidation(validationConfig);
