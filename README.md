@@ -9,7 +9,7 @@
 - `sсripts/` - каталог для основной логики JS.
 - `vendor/` - каталог для шрифтов и их подключение.
 
-## Ссылка на проект 
+## Ссылка на проект
 
 Ссылка на репозиторий GitHub: https://github.com/AleksPinchuk/mesto-project-ff.git
 

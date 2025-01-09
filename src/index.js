@@ -264,10 +264,6 @@ Promise.all([getUserInfo(), getInitialCards()])
 
 // Включение валидации
 enableValidation(validationConfig);
-
-
-
-// /// для создания карточки
 // const cardTemplate = document.querySelector("#card-template").content;
 // const placesList = document.querySelector(".places__list");
 
