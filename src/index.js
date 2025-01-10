@@ -1,7 +1,7 @@
 import "./index.css";
 import { createCard, likeCard, getCardForDeletion } from "./components/card.js";
 import { openModal, closeModal } from "./components/popup.js";
-import { enableValidation, clearValidation, validationConfig } from "./components/validation.js";
+import { enableValidation, clearValidation } from "./components/validation.js";
 import {
   getUserInfo,
   getInitialCards,
@@ -11,6 +11,15 @@ import {
   postNewCard,
   updateNewAvatar,
 } from "./components/api.js";
+
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+};
 
 // Элементы списка карточек
 const placesList = document.querySelector(".places__list");
@@ -151,12 +160,12 @@ function handleAddForm(evt) {
       );
       placesList.prepend(newCard);
       closeModal(addCardPopup);
+      addForm.reset();
     })
     .catch((error) => {
       console.log(error);
     })
     .finally(() => {
-      addForm.reset();
       showLoadingBtn(false, addSaveButton);
     });
 }
@@ -179,12 +188,12 @@ function handleProfileForm(evt) {
     .then((res) => {
       profileImage.style.backgroundImage = `url('${res.avatar}')`;
       closeModal(profilePopup);
+      profileForm.reset();
     })
     .catch((error) => {
       console.log(error);
     })
     .finally(() => {
-      profileForm.reset();
       showLoadingBtn(false, profileSaveButton);
     });
 }
@@ -249,8 +258,7 @@ setupCloseButtons();
 deleteForm.addEventListener("submit", handleDeleteForm);
 
 // Получение информации о пользователе и карточках
-getInitialInfo();
-Promise.all([getUserInfo(), getInitialCards()])
+getInitialInfo()
   .then(([userList, initialCards]) => {
     profileTitle.textContent = userList.name;
     profileDescription.textContent = userList.about;
