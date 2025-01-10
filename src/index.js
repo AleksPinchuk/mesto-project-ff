@@ -3,8 +3,6 @@ import { createCard, likeCard, getCardForDeletion } from "./components/card.js";
 import { openModal, closeModal } from "./components/popup.js";
 import { enableValidation, clearValidation } from "./components/validation.js";
 import {
-  getUserInfo,
-  getInitialCards,
   getInitialInfo,
   deleteMyCard,
   editProfile,
@@ -53,14 +51,9 @@ const addSaveButton = addCardPopup.querySelector(".popup__button");
 const profileForm = document.forms["avatar_edit"];
 const profileLinkInput = profileForm.querySelector(".popup__input_type_url");
 const profileSaveButton = profilePopup.querySelector(".popup__button");
-
 const deleteForm = document.querySelector('form[name="delete-card"]');
-const closeDeleteButton = deletePopup.querySelector(".popup__close");
-const closeEditButton = editPopup.querySelector(".popup__close");
-const closeAddButton = addCardPopup.querySelector(".popup__close");
 
 // Элементы для попапа увеличения изображения
-const closePhotoButton = imgPopup.querySelector(".popup__close");
 const zoomedPopupImage = imgPopup.querySelector(".popup__image");
 const imgPopupCaption = imgPopup.querySelector(".popup__caption");
 
